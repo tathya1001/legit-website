@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { Geist, Geist_Mono, Instrument_Serif, Xanh_Mono } from "next/font/google";
 import Link from "next/link";
+import InstallationGuide from "../components/InstallationGuide"; // Adjust path if needed
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -107,10 +109,16 @@ const commands = [
 
 export default function Home() {
   const commandsRef = useRef<HTMLDivElement | null>(null);
+  const installationRef = useRef<HTMLDivElement | null>(null); // Ref for installation guide
 
   const scrollToCommands = () => {
     commandsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const scrollToInstallation = () => {
+    installationRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-8 gap-2">
@@ -140,6 +148,15 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
           <button
+            onClick={scrollToInstallation} // Added this button
+            className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+          >
+            Installation
+          </button>
+
+          <span className="hidden sm:block text-2xl">•</span>
+          
+          <button
             onClick={scrollToCommands}
             className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
           >
@@ -156,6 +173,11 @@ export default function Home() {
             </button>
           </Link>
         </div>
+      </div>
+
+      {/* Installation Guide Section */}
+      <div ref={installationRef}>
+        <InstallationGuide />
       </div>
 
       <div
