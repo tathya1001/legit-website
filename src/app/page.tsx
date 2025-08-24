@@ -1,103 +1,205 @@
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
+import { Geist, Geist_Mono, Instrument_Serif, Xanh_Mono } from "next/font/google";
+import Link from "next/link";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const xahnMono = Xanh_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  weight: ["400"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-instrument-serif",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const commands = [
+  {
+    name: "legit init",
+    description: "Initialize a new legit repository.",
+  },
+  {
+    name: "legit stage <path>",
+    description: "Stage a specific file or directory.",
+  },
+  {
+    name: "legit stage .",
+    description: "Stage all files recursively.",
+  },
+  {
+    name: "legit unstage <path>",
+    description: "Unstage a specific file or directory.",
+  },
+  {
+    name: 'legit checkpoint -m "<message>"',
+    description: "Commit staged changes with a message.",
+  },
+  {
+    name: 'legit checkpoint -m "<message>" -t <tag>',
+    description: "Commit staged changes and tag the commit. Tag must be unique and single word",
+  },
+  {
+    name: "legit log",
+    description: "View commit history.",
+  },
+  {
+    name: "legit status",
+    description: "Show the working tree status.",
+  },
+  {
+    name: "legit ignore <path>",
+    description: "Add a file or directory to the ignore list.",
+  },
+  {
+    name: "legit branch",
+    description: "List all branches, marking the current one.",
+  },
+  {
+    name: "legit branch <name>",
+    description: "Create a new branch from the current commit.",
+  },
+  {
+    name: "legit branch -d <name>",
+    description: "Delete a branch by name.",
+  },
+  {
+    name: "legit merge <branch>",
+    description: "Merge the specified branch into the current branch.",
+  },
+  {
+    name: "legit load <branch>",
+    description: "Switch to an existing branch.",
+  },
+  {
+    name: "legit load <commit-hash>",
+    description: "Checkout a commit in detached HEAD state.",
+  },
+  {
+    name: "legit load <tag>",
+    description: "Checkout a tag in detached HEAD state.",
+  },
+  {
+    name: "legit load -b <branch>",
+    description: "Create and switch to a new branch.",
+  },
+];
+
+
+
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const commandsRef = useRef<HTMLDivElement | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const scrollToCommands = () => {
+    commandsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-8 gap-2">
+      
+      <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6">
+        <span
+          className={`${instrumentSerif.className} text-7xl sm:text-7xl lg:text-9xl text-white`}
+        >
+          LeGit
+        </span>
+
+        <span
+          className={`${instrumentSerif.className} text-xl sm:text-2xl lg:text-4xl opacity-70`}
+        >
+          A Toy Git in C++
+        </span>
+
+        <div className="flex flex-col sm:flex-row gap-4 mt-10 w-full sm:w-auto">
+          <Link href={"https://github.com/tathya1001/legit/releases/download/v1.0.0/legit.exe"}>
+            <button
+              className={`${instrumentSerif.className} text-lg sm:text-2xl bg-white text-black px-6 py-3 rounded-md cursor-pointer hover:scale-105 transition-transform w-full sm:w-auto`}
+              >
+              Download for Windows
+            </button>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
+          <button
+            onClick={scrollToCommands}
+            className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+          >
+            Commands
+          </button>
+
+          <span className="hidden sm:block text-2xl">•</span>
+
+          <Link href="https://github.com/tathya1001/legit" target="_blank">
+            <button
+              className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+            >
+              GitHub
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      <div
+        ref={commandsRef}
+        className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-20 gap-8 w-full"
+      >
+        <span
+          className={`${instrumentSerif.className} text-3xl sm:text-5xl text-white`}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Commands
+        </span>
+
+        <div className="flex flex-col w-full max-w-3xl mt-8 sm:mt-12 gap-6">
+          {commands.map((cmd, idx) => (
+            <div key={idx}>
+              <div className="p-3 sm:p-4 shadow-lg hover:shadow-2xl transition flex items-start gap-3 rounded-lg">
+                <span
+                  className={`${instrumentSerif.className} text-lg sm:text-2xl text-gray-500`}
+                >
+                  {idx + 1}.
+                </span>
+
+                <div>
+                  <h3
+                    className={`${xahnMono.className} text-lg sm:text-2xl font-semibold text-white mb-1 break-words`}
+                  >
+                    {cmd.name}
+                  </h3>
+
+                  <p
+                    className={`${instrumentSerif.className} text-base sm:text-xl text-gray-300`}
+                  >
+                    {cmd.description}
+                  </p>
+                </div>
+              </div>
+
+              {idx < commands.length - 1 && (
+                <hr className="border-gray-700 my-4" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
