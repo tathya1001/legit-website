@@ -93,14 +93,11 @@ const InstallationGuide = () => {
                 Git
               </a>{" "}
               and a C++ compiler like{" "}
-              <a
-                href="https://www.mingw-w64.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:underline"
+              <span
+                className=""
               >
                 MinGW-w64
-              </a>{" "}
+              </span>{" "}
               installed.
             </li>
             <li>Clone the repository and compile the code:</li>
