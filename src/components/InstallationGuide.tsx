@@ -29,9 +29,6 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-interface InstallationGuideProps {
-  
-}
 
 const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   <pre
@@ -41,7 +38,7 @@ const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   </pre>
 );
 
-const InstallationGuide: FC<InstallationGuideProps> = () => {
+const InstallationGuide = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-20 gap-8 w-full">
       <span
