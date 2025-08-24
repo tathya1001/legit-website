@@ -102,13 +102,11 @@ const InstallationGuide: FC<InstallationGuideProps> = () => {
                 Git
               </a>{" "}
               and a C++ compiler like{" "}
-              <a
-                href="https://www.mingw-w64.org/"
-                target="_blank"
-                className="text-blue-400 hover:underline"
+              <span
+                
               >
                 MinGW-w64
-              </a>{" "}
+              </span>{" "}
               installed.
             </li>
             <li>Clone the repository and compile the code:</li>
