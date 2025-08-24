@@ -1,14 +1,8 @@
-import { Geist, Geist_Mono, Instrument_Serif, Xanh_Mono } from "next/font/google";
+import { Geist, Instrument_Serif, Xanh_Mono } from "next/font/google";
 import Link from "next/link";
 import { FC } from "react";
 
 const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist",
   display: "swap",
@@ -29,7 +23,6 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-
 const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   <pre
     className={`${xahnMono.className} bg-neutral-800 text-white p-4 rounded-md overflow-x-auto my-4`}
@@ -38,6 +31,7 @@ const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   </pre>
 );
 
+// Removed the empty interface and type annotation, as the component takes no props.
 const InstallationGuide = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-20 gap-8 w-full">
@@ -78,7 +72,7 @@ const InstallationGuide = () => {
             </li>
             <li>
               <b>Antivirus Warning:</b> Your browser might flag the file. This
-              is a common false positive for unsigned executables. If you're
+              is a common false positive for unsigned executables. If you&apos;re
               concerned, please proceed with Option B.
             </li>
           </ol>
@@ -94,16 +88,20 @@ const InstallationGuide = () => {
               <a
                 href="https://git-scm.com/downloads"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-blue-400 hover:underline"
               >
                 Git
               </a>{" "}
               and a C++ compiler like{" "}
-              <span
-                
+              <a
+                href="https://www.mingw-w64.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
               >
                 MinGW-w64
-              </span>{" "}
+              </a>{" "}
               installed.
             </li>
             <li>Clone the repository and compile the code:</li>
@@ -173,8 +171,6 @@ g++ *.cpp -static -o legit.exe`}
           </CodeBlock>
           <p className={`${geist.className}`}>If the command is not found, try restarting your computer.</p>
         </div>
-
-        
       </div>
     </div>
   );
