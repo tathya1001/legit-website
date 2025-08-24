@@ -125,7 +125,7 @@ export default function Home() {
       
       <div className="flex flex-col items-center justify-center min-h-screen text-center gap-6">
         <span
-          className={`${instrumentSerif.className} text-7xl sm:text-7xl lg:text-9xl text-white`}
+          className={`${instrumentSerif.className} text-7xl sm:text-8xl lg:text-9xl text-white`}
         >
           LeGit
         </span>
@@ -148,8 +148,8 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
           <button
-            onClick={scrollToInstallation} // Added this button
-            className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+            onClick={scrollToInstallation}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
           >
             Installation
           </button>
@@ -158,7 +158,7 @@ export default function Home() {
           
           <button
             onClick={scrollToCommands}
-            className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
           >
             Commands
           </button>
@@ -167,7 +167,7 @@ export default function Home() {
 
           <Link href="https://github.com/tathya1001/legit" target="_blank">
             <button
-              className={`${instrumentSerif.className} text-lg sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
+              className={`${instrumentSerif.className} text-xl sm:text-2xl text-white hover:italic rounded-md cursor-pointer hover:scale-110 transition-transform`}
             >
               GitHub
             </button>
@@ -175,7 +175,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Installation Guide Section */}
       <div ref={installationRef}>
         <InstallationGuide />
       </div>

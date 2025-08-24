@@ -25,7 +25,7 @@ const instrumentSerif = Instrument_Serif({
 
 const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   <pre
-    className={`${xahnMono.className} bg-neutral-800 text-white p-4 rounded-md overflow-x-auto my-4`}
+    className={`${xahnMono.className} bg-neutral-800 text-white p-4 rounded-lg overflow-x-auto my-4 text-sm sm:text-base`}
   >
     <code className={`${xahnMono.className}`}>{children}</code>
   </pre>
@@ -33,17 +33,18 @@ const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
 
 const InstallationGuide = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-20 gap-8 w-full">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 lg:px-20 py-10 gap-6 sm:gap-10 w-full">
       <span
-        className={`${instrumentSerif.className} text-3xl sm:text-5xl text-white`}
+        className={`${instrumentSerif.className} text-3xl sm:text-4xl lg:text-5xl text-white text-center`}
       >
         Installation Guide
       </span>
-      <div className="flex flex-col w-full max-w-3xl mt-8 sm:mt-12 gap-10 text-gray-300 text-lg sm:text-xl">
+
+      <div className="flex flex-col w-full max-w-3xl mt-6 sm:mt-12 gap-8 sm:gap-12 text-gray-300 text-base sm:text-lg leading-relaxed">
         {/* Step 1: Get the Executable */}
         <div>
           <h3
-            className={`${instrumentSerif.className} text-2xl sm:text-3xl font-semibold text-white mb-4`}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl lg:text-3xl font-semibold text-white mb-3`}
           >
             Step 1: Get the Executable
           </h3>
@@ -53,7 +54,7 @@ const InstallationGuide = () => {
           </p>
 
           <h4
-            className={`${instrumentSerif.className} text-xl sm:text-2xl text-white mt-6 mb-2`}
+            className={`${instrumentSerif.className} text-lg sm:text-xl lg:text-2xl text-white mt-5 mb-2`}
           >
             Option A: Download Pre-compiled
           </h4>
@@ -77,7 +78,7 @@ const InstallationGuide = () => {
           </ol>
 
           <h4
-            className={`${instrumentSerif.className} text-xl sm:text-2xl text-white mt-6 mb-2`}
+            className={`${instrumentSerif.className} text-lg sm:text-xl lg:text-2xl text-white mt-5 mb-2`}
           >
             Option B: Compile from Source
           </h4>
@@ -92,13 +93,7 @@ const InstallationGuide = () => {
               >
                 Git
               </a>{" "}
-              and a C++ compiler like{" "}
-              <span
-                className=""
-              >
-                MinGW-w64
-              </span>{" "}
-              installed.
+              and a C++ compiler like <span>MinGW-w64</span> installed.
             </li>
             <li>Clone the repository and compile the code:</li>
           </ol>
@@ -112,22 +107,22 @@ g++ *.cpp -static -o legit.exe`}
         {/* Step 2: Place in Folder */}
         <div>
           <h3
-            className={`${instrumentSerif.className} text-2xl sm:text-3xl font-semibold text-white mb-4`}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl lg:text-3xl font-semibold text-white mb-3`}
           >
             Step 2: Place in a Permanent Folder
           </h3>
           <p className={`${geist.className}`}>
             Create a simple, permanent folder (e.g.,{" "}
-            <code className={`${xahnMono.className}`}>C:\\legit</code>) and
-            move the <code className={`${xahnMono.className}`}>legit.exe</code>{" "}
-            file into it.
+            <code className={`${xahnMono.className}`}>C:\\legit</code>) and move
+            the <code className={`${xahnMono.className}`}>legit.exe</code> file
+            into it.
           </p>
         </div>
 
         {/* Step 3: Add to PATH */}
         <div>
           <h3
-            className={`${instrumentSerif.className} text-2xl sm:text-3xl font-semibold text-white mb-4`}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl lg:text-3xl font-semibold text-white mb-3`}
           >
             Step 3: Add the Folder to Windows PATH
           </h3>
@@ -135,9 +130,7 @@ g++ *.cpp -static -o legit.exe`}
             To run <code className={`${xahnMono.className}`}>legit</code> from
             any terminal, you must add its folder to the Windows PATH.
           </p>
-          <ol
-            className={`${geist.className} list-decimal list-inside space-y-2 mt-4`}
-          >
+          <ol className={`${geist.className} list-decimal list-inside space-y-2 mt-3`}>
             <li>
               Press the Windows Key, search for &quot;
               <b>Edit the system environment variables</b>&quot;, and open it.
@@ -160,7 +153,7 @@ g++ *.cpp -static -o legit.exe`}
         {/* Step 4: Verify */}
         <div>
           <h3
-            className={`${instrumentSerif.className} text-2xl sm:text-3xl font-semibold text-white mb-4`}
+            className={`${instrumentSerif.className} text-xl sm:text-2xl lg:text-3xl font-semibold text-white mb-3`}
           >
             Step 4: Verify the Installation
           </h3>
