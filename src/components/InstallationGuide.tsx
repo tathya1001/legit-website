@@ -31,7 +31,6 @@ const CodeBlock: FC<{ children: React.ReactNode }> = ({ children }) => (
   </pre>
 );
 
-// Removed the empty interface and type annotation, as the component takes no props.
 const InstallationGuide = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-20 gap-8 w-full">
@@ -123,7 +122,8 @@ g++ *.cpp -static -o legit.exe`}
           <p className={`${geist.className}`}>
             Create a simple, permanent folder (e.g.,{" "}
             <code className={`${xahnMono.className}`}>C:\\legit</code>) and
-            move the `legit.exe` file into it.
+            move the <code className={`${xahnMono.className}`}>legit.exe</code>{" "}
+            file into it.
           </p>
         </div>
 
@@ -135,26 +135,31 @@ g++ *.cpp -static -o legit.exe`}
             Step 3: Add the Folder to Windows PATH
           </h3>
           <p className={`${geist.className}`}>
-            To run `legit` from any terminal, you must add its folder to the
-            Windows PATH.
+            To run <code className={`${xahnMono.className}`}>legit</code> from
+            any terminal, you must add its folder to the Windows PATH.
           </p>
-          <ol className={`${geist.className} list-decimal list-inside space-y-2 mt-4`}>
+          <ol
+            className={`${geist.className} list-decimal list-inside space-y-2 mt-4`}
+          >
             <li>
-              Press the Windows Key, search for "
-              <b>Edit the system environment variables</b>", and open it.
-            </li>
-            <li>Click on the `Environment Variables...` button.</li>
-            <li>
-              Under `System variables`, select the `Path` variable and click `Edit...`.
+              Press the Windows Key, search for &quot;
+              <b>Edit the system environment variables</b>&quot;, and open it.
             </li>
             <li>
-              Click `New` and paste the path to your folder (e.g.,{" "}
+              Click on the <code>Environment Variables...</code> button.
+            </li>
+            <li>
+              Under <code>System variables</code>, select the{" "}
+              <code>Path</code> variable and click <code>Edit...</code>.
+            </li>
+            <li>
+              Click <code>New</code> and paste the path to your folder (e.g.,{" "}
               <code className={`${xahnMono.className}`}>C:\\legit</code>).
             </li>
-            <li>Click `OK` on all windows to save.</li>
+            <li>Click <code>OK</code> on all windows to save.</li>
           </ol>
         </div>
-        
+
         {/* Step 4: Verify */}
         <div>
           <h3
@@ -163,13 +168,16 @@ g++ *.cpp -static -o legit.exe`}
             Step 4: Verify the Installation
           </h3>
           <ol className={`${geist.className} list-decimal list-inside space-y-2`}>
-            <li><b>Open a new terminal window</b> to ensure the changes are applied.</li>
+            <li>
+              <b>Open a new terminal window</b> to ensure the changes are
+              applied.
+            </li>
             <li>Navigate to any project folder and test the command:</li>
           </ol>
-          <CodeBlock>
-            {`legit init`}
-          </CodeBlock>
-          <p className={`${geist.className}`}>If the command is not found, try restarting your computer.</p>
+          <CodeBlock>{`legit init`}</CodeBlock>
+          <p className={`${geist.className}`}>
+            If the command is not found, try restarting your computer.
+          </p>
         </div>
       </div>
     </div>
